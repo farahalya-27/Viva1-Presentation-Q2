@@ -14,7 +14,6 @@ public class QUESTION2 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       //masuk harga barang ( 0 untuk stop)atleast kena ada satu item
        double price = 0.0;
        double subtotal = 0.0;
        double studentDiscount = 0.0;
@@ -43,16 +42,17 @@ public class QUESTION2 {
        day = scan.next();
        System.out.print("Enter hour(24-hour format):");
        hour = scan.nextDouble();
+       if(hour<0 || hour > 23){
+                System.out.print("Invalid hour. Please enter within (0-23): ");
+                hour = scan.nextDouble();
+       }
        System.out.print("Is customer a member (Y/N)? ");
        member = scan.next();
        
-       System.out.println("---- Kopi-Satu Receipt ------------------");
+       System.out.println("------------ Kopi-Satu Receipt -------------");
        
         System.out.printf("The total price for your item is :RM%.2f ", subtotal);
-       //service tax
-       
        double serviceTax ;
-       
        if(subtotal <= 30.00){
            serviceTax = subtotal * 0.06;
             System.out.printf("\n%-33s RM%.2f\n"," Service Tax (6%): " , serviceTax);
@@ -66,8 +66,6 @@ public class QUESTION2 {
        
        double totalBeforeDiscount = subtotal + serviceTax;
        System.out.printf("%-33s RM%.2f\n","Total before discount : ", totalBeforeDiscount);
-        //hari
-      
        switch (day){
            case "Monday":
            case "Tuesday":
@@ -81,8 +79,6 @@ public class QUESTION2 {
                if(hour >= 15.00 && hour < 17.00){
                    happyHour = totalBeforeDiscount * 0.05;
                    System.out.printf("%-33s RM%.2f\n","Happy Hour Discount (5%) : ", happyHour);
-               }else if(hour<0 || hour > 23){
-                System.out.print("Invalid hour. Please enter within (0-23): ");   
                }else{
                    happyHour = 0.0;
                }
@@ -111,6 +107,3 @@ public class QUESTION2 {
        System.out.println("---------------------------------------------");
        System.out.printf("%-33s RM%.2f\n","Final Amount to Collect : ", payable);
     }
-      
-}
-
