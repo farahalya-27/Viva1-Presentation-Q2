@@ -107,3 +107,4 @@ public class QUESTION2 {
        System.out.println("---------------------------------------------");
        System.out.printf("%-33s RM%.2f\n","Final Amount to Collect : ", payable);
     }
+}
